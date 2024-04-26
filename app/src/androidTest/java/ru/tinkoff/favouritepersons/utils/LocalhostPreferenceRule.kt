@@ -1,4 +1,4 @@
-package ru.tinkoff.favouritepersons
+package ru.tinkoff.favouritepersons.utils
 
 import android.content.Context
 import androidx.test.platform.app.InstrumentationRegistry

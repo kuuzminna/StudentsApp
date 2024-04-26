@@ -8,9 +8,9 @@ import io.github.kakaocup.kakao.text.KTextView
 import io.qameta.allure.kotlin.Allure.step
 import ru.tinkoff.favouritepersons.R
 
-class MainPage: BasePage() {
+class MainPage : BasePage() {
     private val text = KTextView { withId(R.id.tw_no_persons) }
-    private val buttonAddPerson = KButton { withId(R.id.fab_add_person)}
+    private val buttonAddPerson = KButton { withId(R.id.fab_add_person) }
     private val buttonNetwork = KButton { withId(R.id.fab_add_person_by_network) }
     private val buttonManual = KButton { withId(R.id.fab_add_person_manually) }
     private val buttonSort = KButton { withId(R.id.action_item_sort) }
@@ -19,7 +19,7 @@ class MainPage: BasePage() {
     private val viewKSnackbar = KSnackbar()
     private val snackbarKView = KView { withText(textOfSnackbar) }
 
-    val name = KTextView { withId(R.id.person_name)}
+    val name = KTextView { withId(R.id.person_name) }
     val info = KTextView { withId(R.id.person_private_info) }
     val email = KTextView { withId(R.id.person_email) }
     val phone = KTextView { withId(R.id.person_phone) }

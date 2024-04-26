@@ -10,7 +10,7 @@ import io.qameta.allure.kotlin.junit4.DisplayName
 import org.junit.Test
 import ru.tinkoff.favouritepersons.pages.MainPage
 
-class ErrorTests: BaseTest() {
+class ErrorTests : BaseTest() {
 
     @Test
     @AllureId("10")
@@ -20,8 +20,8 @@ class ErrorTests: BaseTest() {
             get(urlEqualTo("/api/"))
                 .willReturn(
                     aResponse()
-                    .withStatus(500)
-                    .withFault(Fault.EMPTY_RESPONSE)
+                        .withStatus(500)
+                        .withFault(Fault.EMPTY_RESPONSE)
                 )
         )
         MainPage {

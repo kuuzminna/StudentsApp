@@ -11,7 +11,7 @@ import ru.tinkoff.favouritepersons.PersonDescription
 import ru.tinkoff.favouritepersons.pages.MainPage
 import ru.tinkoff.favouritepersons.utils.fileToString
 
-class MainPageTests: BaseTest() {
+class MainPageTests : BaseTest() {
 
     @Test
     @AllureId("1")

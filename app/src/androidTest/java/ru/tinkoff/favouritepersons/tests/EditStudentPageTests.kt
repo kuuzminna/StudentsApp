@@ -1,50 +1,51 @@
 package ru.tinkoff.favouritepersons.tests
 
+//import ru.tinkoff.favouritepersons.data.network.Picture
 import io.qameta.allure.kotlin.AllureId
 import io.qameta.allure.kotlin.junit4.DisplayName
 import org.junit.Test
+import ru.tinkoff.favouritepersons.PersonDescription
 import ru.tinkoff.favouritepersons.pages.EditStudentPage
 import ru.tinkoff.favouritepersons.pages.MainPage
-//import ru.tinkoff.favouritepersons.data.network.Picture
-import ru.tinkoff.favouritepersons.domain.Gender
 
-class EditStudentPageTests: BaseTest() {
+class EditStudentPageTests : BaseTest() {
 
     @Test
     @AllureId("5")
     @DisplayName("Проверка открытия второго экрана с данными пользователя")
     fun checkOpeningSecondScreenWithUserData() = run {
+        mock(listOf(PersonDescription()))
         MainPage {
             clickButtonAddPerson()
-             clickButtonNetwork()
+            clickButtonNetwork()
             name.click()
         }
         EditStudentPage {
             checkNameHasText("Leo")
             checkSurnameHasText("Lampo")
-            checkGenderHasText(Gender.MALE.toString())
-            Thread.sleep(20_000)
-            checkBirthdayHasText("") //TODO как узнать дату рождения
+            checkGenderHasText("М")
+            checkBirthdayHasText("1951-08-01")
         }
-
     }
 
     @Test
     @AllureId("6")
     @DisplayName("Проверка редактирования студента")
     fun checkStudentsEditing() = run {
+        mock(listOf(PersonDescription()))
         MainPage {
+            clickButtonAddPerson()
             clickButtonNetwork()
             name.click()
         }
         EditStudentPage {
-            typeTextInName("Иосиф")
+            replaceTextInName("Иосиф")
             clickSubmitButton()
         }
         MainPage {
             name.containsText("Иосиф Lampo")
         }
-}
+    }
 
     @Test
     @AllureId("7")
@@ -66,7 +67,6 @@ class EditStudentPageTests: BaseTest() {
             pressBack()
             typeTextInScore(enteredRating)
             clickSubmitButton()
-//            Thread.sleep(45_000)
         }
         MainPage {
             name.containsText("$enteredName $enteredSurname")
@@ -76,7 +76,6 @@ class EditStudentPageTests: BaseTest() {
             address.containsText(enteredAddress)
             rating.containsText(enteredRating)
             //TODO проверить картинку
-            //TODO почему-то акцент на корректный возраст
             Thread.sleep(2_000)
         }
     }

@@ -6,10 +6,10 @@ import io.github.kakaocup.kakao.text.KTextView
 import io.qameta.allure.kotlin.Allure.step
 import ru.tinkoff.favouritepersons.R
 
-class EditStudentPage: BasePage() {
+class EditStudentPage : BasePage() {
     private val nameEdit = KEditText { withId(R.id.et_name) }
     private val surnameEdit = KEditText { withId(R.id.et_surname) }
-    private val genderEdit = KEditText { withId(R.id.et_gender)}
+    private val genderEdit = KEditText { withId(R.id.et_gender) }
     private val birthdayEdit = KEditText { withId(R.id.et_birthdate) }
     private val emailEdit = KEditText { withId(R.id.et_email) }
     private val phoneEdit = KEditText { withId(R.id.et_phone) }
@@ -18,11 +18,17 @@ class EditStudentPage: BasePage() {
     private val scoreEdit = KEditText { withId(R.id.et_score) }
     private val submitButton = KButton { withId(R.id.submit_button) }
 
-    private val genderError = KTextView { withText("Поле должно быть заполнено буквами М или Ж")}
+    private val genderError = KTextView { withText("Поле должно быть заполнено буквами М или Ж") }
 
     fun typeTextInName(name: String) {
         step("Вводим текст \"$name\" в поле Имени") {
             nameEdit.typeText(name)
+        }
+    }
+
+    fun replaceTextInName(name: String) {
+        step("Заменяем текст \"$name\" в поле Имени") {
+            nameEdit.replaceText(name)
         }
     }
 
@@ -34,7 +40,7 @@ class EditStudentPage: BasePage() {
 
     fun replaceTextInGender(gender: String) {
         step("Вводим текст \"$gender\" в поле Пол") {
-            genderEdit.typeText(gender)
+            genderEdit.replaceText(gender)
         }
     }
 
@@ -81,19 +87,27 @@ class EditStudentPage: BasePage() {
     }
 
     fun checkNameHasText(name: String) {
-        nameEdit.hasText(name)
+        step("Проверить, что в поле Имя значение \"$name\"") {
+            nameEdit.hasText(name)
+        }
     }
 
     fun checkSurnameHasText(surname: String) {
-        surnameEdit.hasText(surname)
+        step("Проверить, что в поле Фамилия значение \"$surname\"") {
+            surnameEdit.hasText(surname)
+        }
     }
 
     fun checkGenderHasText(gender: String) {
-        genderEdit.hasText(gender)
+        step("Проверить, что в поле Пол значение \"$gender\"") {
+            genderEdit.hasText(gender)
+        }
     }
 
     fun checkBirthdayHasText(birthday: String) {
-        birthdayEdit.hasText(birthday)
+        step("Проверить, что в поле Дата рождения значение \"$birthday\"") {
+            birthdayEdit.hasText(birthday)
+        }
     }
 
     fun checkGenderErrorIsDisplayed() {
