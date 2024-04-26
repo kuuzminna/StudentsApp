@@ -83,25 +83,14 @@ dependencies {
     kapt 'androidx.room:room-compiler:2.5.1'
 
     //tests
-    androidTestImplementation("com.kaspersky.android-components:kaspresso:1.5.2")
-    androidTestImplementation 'com.kaspersky.android-components:kaspresso-allure-support:1.5.1'
+    androidTestImplementation("com.kaspersky.android-components:kaspresso:1.5.3")
+    androidTestImplementation 'com.kaspersky.android-components:kaspresso-allure-support:1.5.3'
     // https://mvnrepository.com/artifact/junit/junit
     testImplementation("junit:junit:4.13.2")
-    // https://mvnrepository.com/artifact/io.qameta.allure/allure-maven
-//    testImplementation("io.qameta.allure:allure-maven:2.8'")
-//    // https://mvnrepository.com/artifact/io.qameta.allure/allure-kotlin-junit4
-    implementation group: 'io.qameta.allure', name: 'allure-kotlin-junit4', version: '2.4.0'
-//    testImplementation('io.qameta.allure:allure-kotlin-junit4:2.4.0')
-    testImplementation('io.qameta.allure:allure-kotlin-commons:2.4.0')
-//    androidTestImplementation('org.hamcrest:hamcrest-core:2.2')
-    testImplementation "org.hamcrest:hamcrest:2.2"
-//    testImplementation "io.qameta.allure:allure-kotlin-model:2.4.0"
-//    testImplementation "io.qameta.allure:allure-kotlin-commons:2.4.0"
-
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestUtil 'androidx.test:orchestrator:1.4.2'
 //    androidTestImplementation("com.github.tomakehurst:wiremock-jre8:2.33.2")
-    androidTestImplementation("com.github.tomakehurst:wiremock:2.23.0") {
+    androidTestImplementation("com.github.tomakehurst:wiremock:2.26.3") {
         exclude group: 'org.apache.httpcomponents', module: 'httpclient'
     }
     implementation 'com.squareup.okhttp3:okhttp:4.9.0'
