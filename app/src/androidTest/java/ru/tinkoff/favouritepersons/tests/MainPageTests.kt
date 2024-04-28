@@ -22,10 +22,10 @@ class MainPageTests : BaseTest() {
                 .willReturn(ok(fileToString("mock/mock-first.json")))
         )
         MainPage {
-            checkTextIsDisplayed()
+            checkTextNoPersonsIsDisplayed()
             clickButtonAddPerson()
             clickButtonNetwork()
-            checkTextIsNotDisplayed()
+            checkTextNoPersonsIsNotDisplayed()
         }
     }
 
@@ -36,11 +36,16 @@ class MainPageTests : BaseTest() {
         mock(threePeople)
         MainPage {
             clickButtonAddPerson()
-//            clickButtonNetwork()
             repeat(3) { clickButtonNetwork() }
-            Thread.sleep(2000)
-            //TODO свайпнуть кого-то
-            //TODO проверить удаление
+
+            checkNameInPosition(0, "Kiril")
+            checkNameInPosition(1, "Anton")
+            checkNameInPosition(2, "Leo")
+
+            swipePersonInPosition(0)
+
+            checkNameInPosition(0, "Anton")
+            checkNameInPosition(1, "Leo")
         }
     }
 
@@ -62,15 +67,19 @@ class MainPageTests : BaseTest() {
         MainPage {
             clickButtonAddPerson()
             repeat(3) { clickButtonNetwork() }
+            checkInfoInPosition(0, "22")
+            checkInfoInPosition(1, "44")
+            checkInfoInPosition(2, "72")
             clickSortButton()
             clickAge()
-//            Thread.sleep(20000)
-            //TODO сделать проверку сортировки по возрастанию
+            checkInfoInPosition(0, "72")
+            checkInfoInPosition(1, "44")
+            checkInfoInPosition(2, "22")
         }
     }
 
     companion object {
-        val threePeople = listOf(
+        private val threePeople = listOf(
             PersonDescription(),
             PersonDescription(
                 name = "Anton",

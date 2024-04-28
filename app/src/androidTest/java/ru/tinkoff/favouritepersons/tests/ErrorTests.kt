@@ -27,7 +27,9 @@ class ErrorTests : BaseTest() {
         MainPage {
             clickButtonAddPerson()
             clickButtonNetwork()
-            checkSnackbarDisplayed()
+            flakySafely (15_000, 500) {
+                checkSnackbarDisplayed()
+            }
         }
     }
 }

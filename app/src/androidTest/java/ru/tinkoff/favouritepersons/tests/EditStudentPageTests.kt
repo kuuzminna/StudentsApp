@@ -1,6 +1,5 @@
 package ru.tinkoff.favouritepersons.tests
 
-//import ru.tinkoff.favouritepersons.data.network.Picture
 import io.qameta.allure.kotlin.AllureId
 import io.qameta.allure.kotlin.junit4.DisplayName
 import org.junit.Test
@@ -18,7 +17,7 @@ class EditStudentPageTests : BaseTest() {
         MainPage {
             clickButtonAddPerson()
             clickButtonNetwork()
-            name.click()
+            clickPersonInPosition(0)
         }
         EditStudentPage {
             checkNameHasText("Leo")
@@ -36,14 +35,14 @@ class EditStudentPageTests : BaseTest() {
         MainPage {
             clickButtonAddPerson()
             clickButtonNetwork()
-            name.click()
+            clickPersonInPosition(0)
         }
         EditStudentPage {
             replaceTextInName("Иосиф")
             clickSubmitButton()
         }
         MainPage {
-            name.containsText("Иосиф Lampo")
+            checkNameInPosition(0, "Иосиф Lampo")
         }
     }
 
@@ -69,14 +68,12 @@ class EditStudentPageTests : BaseTest() {
             clickSubmitButton()
         }
         MainPage {
-            name.containsText("$enteredName $enteredSurname")
-            info.containsText("Female, 24")
-            email.containsText(enteredEmail)
-            phone.containsText(enteredPhone)
-            address.containsText(enteredAddress)
-            rating.containsText(enteredRating)
-            //TODO проверить картинку
-            Thread.sleep(2_000)
+            checkNameInPosition(0, "$enteredName $enteredSurname")
+            checkInfoInPosition(0, "Female, 24")
+            checkEmailInPosition(0, enteredEmail)
+            checkPhoneInPosition(0, enteredPhone)
+            checkAddressInPosition(0, enteredAddress)
+            checkRatingInPosition(0, enteredRating)
         }
     }
 
@@ -91,7 +88,6 @@ class EditStudentPageTests : BaseTest() {
         EditStudentPage {
             clickSubmitButton()
             checkGenderErrorIsDisplayed()
-            //TODO проверить что отображается рядом с полем ПОЛ
         }
     }
 
